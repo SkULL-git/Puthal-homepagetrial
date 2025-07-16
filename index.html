@@ -1,16 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Puthal - Mental Health Reimagined</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Puthal - Mental Health App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6c4ccf;
+      --bg: #fdf7ff;
+      --text: #2a2a2a;
+      --card: #fafafa;
+    }
 
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a {
+      font-size: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+
+    .hero-left {
+      flex: 1 1 400px;
+      padding-right: 40px;
+    }
+
+    .hero-left h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-left p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .store-buttons img {
+      width: 160px;
+      margin-right: 15px;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+
+    .store-buttons img:hover {
+      transform: scale(1.05);
+    }
+
+    .hero-right {
+      flex: 1 1 320px;
+      text-align: center;
+    }
+
+    .hero-right img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
+      background: white;
+    }
+
+    .feature {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .feature img {
+      width: 40px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 14px;
+    }
+
+    footer {
+      background-color: #f3f3f3;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-left {
+        text-align: center;
+        padding-right: 0;
+      }
+
+      .store-buttons img {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
 <body>
 
-  <!-- Header!-->
+  <!-- Header -->
   <header>
-    <h1>Puthal</h1>
+    <div class="logo">Puthal</div>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
@@ -23,51 +195,48 @@
   </header>
 
   <!-- Hero Section -->
-  <section>
-    <h2>Mental Health<br>Well-being<br>Reimagined</h2>
-    <p>Empowering individuals to prioritize their mental well-being through innovative technology.</p>
-
-    <div>
-      <button>Download on the App Store</button>
-      <button>Download on the Google Play</button>
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Mental Health<br>Well-being<br>Reimagined</h1>
+      <p>Empowering individuals to prioritize their mental well-being through innovative technology.</p>
+      <div class="store-buttons">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+      </div>
     </div>
-
-    <!--Placeholder-->
-    <figure>
-      <img src="#" alt="App Preview (placeholder)">
-    </figure>
+    <div class="hero-right">
+      <img src="https://via.placeholder.com/300x600?text=Mobile+Preview" alt="App Preview" />
+    </div>
   </section>
 
-  <!-- Feature Section -->
-  <section>
-    
-    <div>
-
-      <article>
-        <h3>AI Mood Tracking</h3>
-      </article>
-
-      <article>
-        <h3>Mindfulness Exercises</h3>
-      </article>
-
-      <article>
-        <h3>Therapy & Counseling</h3>
-      </article>
-
-      <article>
-        <h3>Community Support</h3>
-      </article>
-
+  <!-- Features -->
+  <section class="features">
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/brain.png" alt="AI Mood Tracking" />
+      <h3>AI Mood Tracking</h3>
+      <p>AI-driven mood monitoring</p>
+    </div>
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/lotus.png" alt="Mindfulness Exercises" />
+      <h3>Mindfulness Exercises</h3>
+      <p>Exercises for inner peace</p>
+    </div>
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="Therapy" />
+      <h3>Therapy & Counseling</h3>
+      <p>Professional support & resources</p>
+    </div>
+    <div class="feature">
+      <img src="group-png-3213.png" alt="Community" />
+      <h3>Community Support</h3>
+      <p>Connect with others</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Puthal. All rights reserved.</p>
-    <p><a href="#">Privacy Policy</a></p>
+    &copy; 2025 Puthal. All rights reserved. | <a href="#">Privacy Policy</a>
   </footer>
 
 </body>
-
 </html>
