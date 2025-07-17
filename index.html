@@ -139,6 +139,7 @@
             position: relative;
             display: inline-block;
             max-width: 280px;
+            border-radius: 30px;
         }
 
         .phone-preview img {
@@ -257,6 +258,27 @@
             .store-buttons img {
                 margin-right: 0;
             }
+
+            .nav-icons {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .search-icon {
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.search-icon:hover {
+  transform: scale(1.1);
+  color: var(--primary);
+}
+
+
         }
     </style>
 </head>
@@ -266,19 +288,34 @@
     <!-- Header -->
     <header>
         <div class="logo">Puthal</div>
+
         <nav class="navbar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Join Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle Dark Mode">
-            <span id="theme-icon">🌙</span>
-        </button>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Join Us</a></li>
+    <li><a href="#">Contact</a></li>
+
+    <!-- ✅ Search Icon placed just next to Contact -->
+    <li>
+      <a href="#" class="search-icon" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.12 5.59 12.53 3 9.5 3S3.88 5.59 3.88 8.5 6.47 14 9.5 14c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+            <!-- Dark Mode Toggle -->
+            <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle Dark Mode">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
     </header>
+
 
     <!-- Hero Section -->
     <section class="hero reveal">
@@ -354,6 +391,10 @@
         window.addEventListener("scroll", revealOnScroll);
         window.addEventListener("load", revealOnScroll);
     </script>
+
+</body>
+
+</html>
 
 </body>
 
