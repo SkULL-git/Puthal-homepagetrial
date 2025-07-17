@@ -11,29 +11,65 @@
       --bg: #fdf7ff;
       --text: #2a2a2a;
       --card: #fafafa;
+      --nav-bg: #ffffff;
+      --nav-text: #2a2a2a;
+      --footer-bg: #f3f3f3;
+    }
+
+    .dark-mode {
+      --bg: #1e1e2f;
+      --text: #f9f9f9;
+      --card: #2a2a40;
+      --nav-bg: #ffffff;
+      --nav-text: #000000;
+      --footer-bg: #1a1a2b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
     }
 
     header {
+      background-color: var(--nav-bg);
+      color: var(--nav-text);
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 20px 60px;
-      background-color: white;
       flex-wrap: wrap;
+      gap: 20px;
     }
 
     .logo {
       font-size: 24px;
       font-weight: 700;
       color: var(--primary);
+      flex: 1;
+    }
+
+    .navbar {
+      flex: 2;
+      display: flex;
+      justify-content: center;
     }
 
     nav ul {
@@ -41,41 +77,32 @@
       display: flex;
       gap: 30px;
       padding: 0;
+      margin: 0;
     }
 
     nav a {
       text-decoration: none;
-      color: var(--text);
+      color: var(--nav-text);
       font-weight: 500;
       transition: color 0.3s;
     }
-
-    nav ul li a {
-      font-size: 16px;
-      justify-content: center;
-      align-items: center;
-    }
-
 
     nav a:hover {
       color: var(--primary);
     }
 
-    /* .dark-mode {
-      --bg: #1e1e2f;
-      --text: #f9f9f9;
-      --card: #2a2a40;
-    } */
-
-    /* .dark-toggle {
-      margin-left: auto;
-      padding: 6px 12px;
-      background: var(--primary);
-      color: white;
+    .dark-toggle {
+      background: none;
       border: none;
-      border-radius: 6px;
+      font-size: 22px;
       cursor: pointer;
-    } */
+      color: var(--text);
+      transition: transform 0.3s ease;
+    }
+
+    .dark-toggle:hover {
+      transform: scale(1.2);
+    }
 
     .hero {
       display: flex;
@@ -117,11 +144,34 @@
       text-align: center;
     }
 
-    .hero-right img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    .phone-frame {
+      background: linear-gradient(to bottom, #ffffff, #f6f0ff);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(108, 76, 207, 0.2);
+      display: inline-block;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .phone-frame:hover {
+      transform: scale(1.03);
+    }
+
+    .phone-frame img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 16px;
+    }
+
+    .phone-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #6c4ccf;
+      font-weight: bold;
+      font-size: 24px;
     }
 
     .features {
@@ -142,13 +192,20 @@
     }
 
     .feature:hover {
+      background-color: #6c4ccf;
+      color: white;
       transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .feature:hover img {
+      filter: brightness(0) invert(1);
     }
 
     .feature img {
       width: 40px;
       margin-bottom: 15px;
+      transition: filter 0.3s;
     }
 
     .feature h3 {
@@ -161,10 +218,32 @@
     }
 
     footer {
-      background-color: #f3f3f3;
+      background-color: var(--footer-bg);
+      color: var(--text);
       text-align: center;
       padding: 20px;
       font-size: 14px;
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 768px) {
@@ -195,11 +274,9 @@
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
     <div class="logo">Puthal</div>
-    <nav>
+    <nav class="navbar">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
@@ -208,59 +285,82 @@
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
-    <!-- <button class="dark-toggle" onclick="toggleDark()">Dark Mode</button> -->
+    <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle Dark Mode">
+      <span id="theme-icon">🌙</span>
+    </button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-left">
-      <h1>Mental Health<br>Well-being<br>Reimagined</h1>
-      <p>Empowering individuals to prioritize their mental well-being through innovative technology.</p>
-      <div class="store-buttons">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+  <main>
+    <section class="hero reveal">
+      <div class="hero-left">
+        <h1>Mental Health<br>Well-being<br>Reimagined</h1>
+        <p>Empowering individuals to prioritize their mental well-being through innovative technology.</p>
+        <div class="store-buttons">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+        </div>
       </div>
-    </div>
-    <div class="hero-right">
-      <img src="https://via.placeholder.com/300x600?text=Mobile+Preview" alt="App Preview" />
-    </div>
-  </section>
+      <div class="hero-right">
+        <div class="phone-frame">
+          <img src="new-modern-realistic-front-view-black-iphone-mockup-isolated-white-mobile-template-vector_90220-957.avif" alt="App Preview" />
+          <div class="phone-text">Puthal</div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Features -->
-  <section class="features">
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/brain.png" alt="AI Mood Tracking" />
-      <h3>AI Mood Tracking</h3>
-      <p>AI-driven mood monitoring</p>
-    </div>
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/lotus.png" alt="Mindfulness Exercises" />
-      <h3>Mindfulness Exercises</h3>
-      <p>Exercises for inner peace</p>
-    </div>
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="Therapy" />
-      <h3>Therapy & Counseling</h3>
-      <p>Professional support & resources</p>
-    </div>
-    <div class="feature">
-      <img src="Community-High-Quality-PNG.png" alt="Community" />
-      <h3>Community Support</h3>
-      <p>Connect with others</p>
-    </div>
-  </section>
+    <section class="features reveal">
+      <div class="feature reveal">
+        <img src="https://img.icons8.com/ios-filled/50/brain.png" alt="AI Mood Tracking" />
+        <h3>AI Mood Tracking</h3>
+        <p>AI-driven mood monitoring</p>
+      </div>
+      <div class="feature reveal">
+        <img src="https://img.icons8.com/ios-filled/50/lotus.png" alt="Mindfulness Exercises" />
+        <h3>Mindfulness Exercises</h3>
+        <p>Exercises for inner peace</p>
+      </div>
+      <div class="feature reveal">
+        <img src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="Therapy" />
+        <h3>Therapy & Counseling</h3>
+        <p>Professional support & resources</p>
+      </div>
+      <div class="feature reveal">
+        <img src="Community-High-Quality-PNG.png" alt="Community" />
+        <h3>Community Support</h3>
+        <p>Connect with others</p>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 Puthal. All rights reserved. | <a href="#">Privacy Policy</a>
   </footer>
 
-  <!-- Dark Mode Toggle Script -->
-  <!-- <script>
+  <script>
     function toggleDark() {
       document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById("theme-icon");
+      icon.textContent = document.body.classList.contains('dark-mode') ? "☀️" : "🌙";
     }
-  </script> -->
+
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll(".reveal");
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 80;
+        if (elementTop < windowHeight - revealPoint) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
+
 
 </body>
 </html>
